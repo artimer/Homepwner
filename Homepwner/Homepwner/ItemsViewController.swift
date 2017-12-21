@@ -19,9 +19,9 @@ class ItemsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        // let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
     }
@@ -45,5 +45,35 @@ class ItemsViewController: UITableViewController {
         
         return cell
     }
+    
+    // MARK: - 4 Event Response
+    
+    @IBAction func addNewItem(_ sender: AnyObject) {
+        
+        let newItem = itemStore.createItem()
+        
+        if let index = itemStore.allItems.index(of: newItem) {
+            let indexPath = NSIndexPath(row: index, section: 0)
+            
+            tableView.insertRows(at: [indexPath as IndexPath], with: .automatic)
+        }
+        
+    }
+    
+    
+    
+    @IBAction func toggleEditingMode(_ sender: AnyObject) {
+        if self.isEditing {
+            sender.setTitle("Edit", for: .normal)
+            
+            setEditing(false, animated: true)
+        } else {
+            sender.setTitle("Done", for: .normal)
+            
+            setEditing(true, animated: true)
+        }
+    }
+    
+    
     
 }
