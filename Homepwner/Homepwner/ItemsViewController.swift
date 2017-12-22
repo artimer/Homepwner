@@ -16,14 +16,14 @@ class ItemsViewController: UITableViewController {
     
     // MARK: - 2 Life Cycle
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
         
         tableView.rowHeight = 65
     }
@@ -38,6 +38,12 @@ class ItemsViewController: UITableViewController {
                 detailViewController.item = item
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
     
     // MARK: - 3 Delegate
@@ -105,21 +111,5 @@ class ItemsViewController: UITableViewController {
         }
         
     }
-    
-    @IBAction func toggleEditingMode(_ sender: AnyObject) {
-        if self.isEditing {
-            sender.setTitle("Edit", for: .normal)
-            
-            setEditing(false, animated: true)
-        } else {
-            sender.setTitle("Done", for: .normal)
-            
-            setEditing(true, animated: true)
-        }
-    }
-    
-    
-    
-    
     
 }
