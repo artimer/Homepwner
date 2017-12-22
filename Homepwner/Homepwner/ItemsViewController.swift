@@ -28,6 +28,18 @@ class ItemsViewController: UITableViewController {
         tableView.rowHeight = 65
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowItem" {
+            
+            if let row = tableView.indexPathForSelectedRow?.row {
+                
+                let item = itemStore.allItems[row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.item = item
+            }
+        }
+    }
+    
     // MARK: - 3 Delegate
     
     // MARK: -- 3.1 UITableViewDataSource

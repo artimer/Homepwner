@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3029AD41FEBEA6900F72E3F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3029AD31FEBEA6900F72E3F /* DetailViewController.swift */; };
 		B30780601FE7FCBB00D1687A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B307805F1FE7FCBB00D1687A /* AppDelegate.swift */; };
 		B30780651FE7FCBB00D1687A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30780631FE7FCBB00D1687A /* Main.storyboard */; };
 		B30780671FE7FCBB00D1687A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30780661FE7FCBB00D1687A /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3029AD31FEBEA6900F72E3F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B307805C1FE7FCBB00D1687A /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B307805F1FE7FCBB00D1687A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B30780641FE7FCBB00D1687A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B3E4FE501FE8B80E0049EAA5 /* ItemsViewController.swift */,
+				B3029AD31FEBEA6900F72E3F /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				B3E4FE511FE8B80E0049EAA5 /* ItemsViewController.swift in Sources */,
 				B3E4FE531FE8B93C0049EAA5 /* Item.swift in Sources */,
 				B3E4FE551FE8C3F90049EAA5 /* ItemStore.swift in Sources */,
+				B3029AD41FEBEA6900F72E3F /* DetailViewController.swift in Sources */,
 				B30780601FE7FCBB00D1687A /* AppDelegate.swift in Sources */,
 				B3D9ACC01FEB90EE00009C1C /* ItemCell.swift in Sources */,
 			);
