@@ -16,8 +16,9 @@ class Item: NSObject {
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: NSDate
+    let itemKey: String
     
-    // MARK: - 2 Life Cycle
+    // MARK: - 2 Initializers
     
     // Designated Initializer, call it's superclass's init if any
     init(name: String, valueInDollars: Int, serialNumber: String?) {
@@ -25,6 +26,7 @@ class Item: NSObject {
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = NSDate()
+        self.itemKey = NSUUID().uuidString
         
         super.init()
     }

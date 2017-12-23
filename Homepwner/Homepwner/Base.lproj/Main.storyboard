@@ -157,25 +157,44 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B33-GS-C9M">
-                                        <rect key="frame" x="0.0" y="114" width="327" height="429"/>
+                                        <rect key="frame" x="0.0" y="114" width="327" height="20.5"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-Xz-YyD">
+                                        <rect key="frame" x="0.0" y="142.5" width="327" height="400.5"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="m3x-M0-skh" firstAttribute="leading" secondItem="M8w-S8-zYY" secondAttribute="leading" id="DQX-Id-5md"/>
                                     <constraint firstItem="M8w-S8-zYY" firstAttribute="leading" secondItem="jnv-v5-fXV" secondAttribute="leading" id="G69-Eu-id3"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-ay-Yxj">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="mDG-jR-4fd"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="kfl-CT-CHf">
+                                        <connections>
+                                            <action selector="takePicture:" destination="O5O-Tc-6SL" id="Nxf-gZ-tTa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gsy-Hh-moJ" firstAttribute="top" secondItem="ed9-0e-dnB" secondAttribute="bottom" constant="8" id="1i8-kB-g4F"/>
                             <constraint firstItem="7nh-CI-Cxq" firstAttribute="top" secondItem="gsy-Hh-moJ" secondAttribute="bottom" constant="8" id="G2A-ju-aHf"/>
+                            <constraint firstAttribute="trailing" secondItem="tZt-ay-Yxj" secondAttribute="trailing" id="HAR-Do-HgP"/>
+                            <constraint firstItem="tZt-ay-Yxj" firstAttribute="leading" secondItem="QRQ-Qf-Jgk" secondAttribute="leading" id="KMs-dV-wWz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gsy-Hh-moJ" secondAttribute="trailing" constant="8" id="SFQ-wK-pEW"/>
+                            <constraint firstAttribute="bottom" secondItem="tZt-ay-Yxj" secondAttribute="bottom" id="Vea-wE-BBh"/>
                             <constraint firstItem="gsy-Hh-moJ" firstAttribute="leading" secondItem="QRQ-Qf-Jgk" secondAttribute="leadingMargin" constant="8" id="rPr-m8-Shl"/>
                         </constraints>
                         <connections>
@@ -184,6 +203,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="B33-GS-C9M" id="40m-hH-6dh"/>
+                        <outlet property="imageView" destination="e5m-Xz-YyD" id="kxm-2l-j6g"/>
                         <outlet property="nameField" destination="m3x-M0-skh" id="ksX-Kt-bxF"/>
                         <outlet property="serialNumbeField" destination="M8w-S8-zYY" id="Rd8-2o-j9h"/>
                         <outlet property="valueField" destination="jnv-v5-fXV" id="VVm-QS-Ttc"/>

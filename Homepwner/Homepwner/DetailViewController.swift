@@ -10,11 +10,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    // MARK: - 1 Property
+    
     var item: Item! {
         didSet {
             navigationItem.title = item.name
         }
     }
+    var imageStore: ImageStore!
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -37,6 +40,9 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var dateLabel: UILabel!
     
+    @IBOutlet var imageView: UIImageView!
+    
+    // MARK: - 2 View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,6 +51,11 @@ class DetailViewController: UIViewController {
         serialNumbeField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: item.valueInDollars as NSNumber)
         dateLabel.text = dateFormatter.string(from: item.dateCreated as Date)
+        
+        let key = item.itemKey
+        
+        let imageToDisplay = imageStore.imageForKey(key: key)
+        imageView.image = imageToDisplay
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,18 +75,59 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // MARK: - 3 Actions
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    @IBAction func takePicture(_ sender: UIBarButtonItem) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
     
 }
+
+// MARK: - 4 UITextFieldDelegate
 
 extension DetailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+// MARK: - 5 UINavigationControllerDelegate
+
+extension DetailViewController: UINavigationControllerDelegate {
+    
+}
+
+// MARK: - 6 UIImagePickerControllerDelegate
+
+extension DetailViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        imageStore.setImage(image: image, forKey: item.itemKey)
+        
+        imageView.image = image
+        
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -13,14 +13,17 @@ class ItemsViewController: UITableViewController {
     // MARK: - 1 Property
     
     var itemStore: ItemStore!
+    var imageStore: ImageStore!
     
-    // MARK: - 2 Life Cycle
+    // MARK: - 2 Initializers
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
+
+    // MARK: - 3 View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,7 @@ class ItemsViewController: UITableViewController {
                 let item = itemStore.allItems[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.item = item
+                detailViewController.imageStore = imageStore
             }
         }
     }
@@ -46,9 +50,9 @@ class ItemsViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    // MARK: - 3 Delegate
+    // MARK: - 4 Delegate
     
-    // MARK: -- 3.1 UITableViewDataSource
+    // MARK: -- 4.1 UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count
@@ -85,6 +89,8 @@ class ItemsViewController: UITableViewController {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
                 self.itemStore.removeItem(item: item)
                 
+                self.imageStore.deleteImageForKey(key: item.itemKey)
+                
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             })
             ac.addAction(deleteAction)
@@ -98,7 +104,7 @@ class ItemsViewController: UITableViewController {
         itemStore.moveItemAtIndex(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
     }
     
-    // MARK: - 4 Event Response
+    // MARK: - 5 Actions(Event Response)
     
     @IBAction func addNewItem(_ sender: AnyObject) {
         
